@@ -1,0 +1,19 @@
+# ignore all root dirs
+/*/
+# ignore all root files
+/*
+# ignore any .bak files
+*.bak
+
+# exclude desired dirs
+!/nvim/
+!/kitty/
+!/tmux/
+!/hypr/
+!/waybar/
+!/scripts/
+
+# exclude configuration.nix
+!/configuration.nix
+!/.bashrc
+!/.gitignore
