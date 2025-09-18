@@ -32,6 +32,7 @@ vim.pack.add({
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
+	{ src = "https://github.com/lambdalisue/vim-suda" },
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
