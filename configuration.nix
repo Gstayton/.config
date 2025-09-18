@@ -7,9 +7,10 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+	[ # Include the results of the hardware scan.
+		/etc/nixos/hardware-configuration.nix
+		/etc/nixos/nvidia.nix
+	];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -21,11 +22,12 @@
   #  "/var".options = [ "compress=zstd" ];
   #};
 
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "Erasmus"; # Define your hostname.
+  networking.hostName = "Omnius"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -58,11 +60,14 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  # services.pulseaudio.enable = true;
+  services.pulseaudio.enable = false;
   # OR
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
+	alsa.enable = true;
+	alsa.support32Bit = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -137,6 +142,8 @@
 	fzf
 	ranger
 	keychain
+	qpwgraph
+	teamspeak3
   ];
 
   nixpkgs.overlays = [
