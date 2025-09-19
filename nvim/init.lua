@@ -14,7 +14,7 @@ vim.g.mapleader = ","
 
 
 vim.keymap.set({ 'n', 'v' }, '<leader>v', ':e $MYVIMRC<CR>')
-vim.keymap.set({ 'n', 'v' }, '<leader>b', ':e ~/.ashrc<CR>')
+vim.keymap.set({ 'n', 'v' }, '<leader>b', ':e ~/.bashrc<CR>')
 vim.keymap.set({ 'n', 'v' }, '<leader>nix', ':e /etc/nixos/configuration.nix<CR>')
 vim.keymap.set({ 'n', 'v' }, '<leader>o', ':update<CR>:source<CR>')
 vim.keymap.set({ 'n', 'v' }, '<leader>w', ':write<CR>')
