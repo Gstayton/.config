@@ -88,6 +88,11 @@
     ];
   };
 
+  nix.settings.trusted-users = [
+    "root"
+    "kosan"
+  ];
+
   programs.firefox.enable = true;
   programs.nh = {
     enable = true;
@@ -119,6 +124,7 @@
   environment.systemPackages = with pkgs; [
     wget
     wayland-utils
+    xdg-desktop-portal-hyprland
     kdePackages.sddm-kcm
     kitty
     wofi
@@ -153,6 +159,10 @@
     pavucontrol
     cifs-utils
     nixfmt-rfc-style
+    devenv
+    direnv
+    hypridle
+	starship
   ];
 
   nixpkgs.overlays = [
