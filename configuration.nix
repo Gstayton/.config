@@ -2,15 +2,19 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-	[ # Include the results of the hardware scan.
-		/etc/nixos/hardware-configuration.nix
-		/etc/nixos/nvidia.nix
-	];
+  imports = [
+    # Include the results of the hardware scan.
+    /etc/nixos/hardware-configuration.nix
+    /etc/nixos/nvidia.nix
+  ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -22,7 +26,6 @@
   #  "/var".options = [ "compress=zstd" ];
   #};
 
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -30,7 +33,11 @@
   networking.hostName = "Omnius"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+
+  networking.hosts = {
+    "192.168.0.235" = [ "tokyo" ];
+  };
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -51,7 +58,6 @@
   services.xserver.enable = true;
   # System will be using hyprland & wayland - no x11
 
-
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -66,8 +72,8 @@
   services.pipewire = {
     enable = true;
     pulse.enable = true;
-	alsa.enable = true;
-	alsa.support32Bit = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -81,13 +87,13 @@
       tree
     ];
   };
-  
+
   programs.firefox.enable = true;
   programs.nh = {
     enable = true;
     clean.enable = true;
   };
-  programs.hyprland  = {
+  programs.hyprland = {
     enable = true;
     withUWSM = true;
     xwayland.enable = true;
@@ -100,7 +106,7 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   programs.steam.enable = true;
 
-  fonts.packages = with pkgs; [ 
+  fonts.packages = with pkgs; [
     nerd-fonts.fira-code
     nerd-fonts.droid-sans-mono
   ];
@@ -129,27 +135,32 @@
     neofetch
     mpc
     ymuse
-	rmpc
+    rmpc
     unzip
     tmux
     cargo
     gcc_multi
-	lua-language-server
-	nil
-	nodejs_20
-	lazygit
-	ripgrep
-	fzf
-	ranger
-	keychain
-	qpwgraph
-	teamspeak3
+    lua-language-server
+    nil
+    nodejs_20
+    lazygit
+    ripgrep
+    fzf
+    ranger
+    keychain
+    qpwgraph
+    teamspeak3
+    pavucontrol
+    cifs-utils
+    nixfmt-rfc-style
   ];
 
   nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
-    }))
+    (import (
+      builtins.fetchTarball {
+        url = "https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz";
+      }
+    ))
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -178,13 +189,12 @@
     network.listenAddress = "any";
     #network.startWhenNeeded = true;
     extraConfig = ''
-      audio_output {
-        type "pipewire"
-	name "MPD Output"
-      }
-      '';
+            audio_output {
+              type "pipewire"
+      	name "MPD Output"
+            }
+    '';
   };
-
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -220,4 +230,3 @@
   system.stateVersion = "25.05"; # Did you read the comment?
 
 }
-
