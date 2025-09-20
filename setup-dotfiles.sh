@@ -25,6 +25,7 @@ link_files() {
 
 ## files that don't need root
 link_files .bashrc ~/.bashrc
+link_files ./bin ~/bin
 
 ## files that may need root
 if [ "$EUID" -ne 0 ]; then
