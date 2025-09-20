@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 
-url="https://xkcd.com/$1/"
-
-page="$(curl -L -s $url)"
+if [[ $1 =~ random|rand|-r ]]; then
+	page="$(curl -L -s "https://xkcd.com/")"
+	max="$(curl -L -s "https://xkcd.com" | rg 'Permanent link to this comic: ' | rg -o '"(.*?)"' | tr -d '"' | rg -o '[0-9]' | tr -d '[:space:]')"
+	id="$(shuf -i 1-$max -n 1)"
+	url="https://xkcd.com/$id/"
+	page="$(curl -L -s $url)"
+else
+	url="https://xkcd.com/$1/"
+	page="$(curl -L -s $url)"
+fi
 
 img="$(echo $page | rg -o --pcre2 'https:\/\/imgs\.xkcd\.com\/comics\/\w*(?<!_2x)\.png' | head -1)"
 alt="$(echo $page |rg -o --pcre2 'title=(?!"Default|"Atom|"RSS)"(.*?)"'| rg -o '"(.*?)"' | sed -E 's/(\{\{Title text: )|(\}\})//g' | sed -e 's/&amp;/&/g' -e 's/&lt;/</g' -e 's/&gt;/>/g' -e 's/&quot;/"/g' -e 's/&#39;/\x27/g')"
