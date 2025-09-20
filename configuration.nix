@@ -37,6 +37,7 @@
 
   networking.hosts = {
     "192.168.0.235" = [ "tokyo" ];
+	"192.168.0.5" = [ "pihole" ];
   };
 
   # Set your time zone.
@@ -131,38 +132,42 @@
     x11_ssh_askpass
     git
     python3
-    luajitPackages.luarocks-nix
+    luajitPackages.luarocks-nix # maybe not needed anymore without mason?
     lua51Packages.lua
     p7zip
     cliphist
     wl-clipboard
     discord
-    (flameshot.override { enableWlrSupport = true; })
+    (flameshot.override { enableWlrSupport = true; }) # screenshot utility
     neofetch
-    mpc
-    ymuse
-    rmpc
+    mpc # cli music player
+    ymuse # mpc client
+    rmpc # tui mpc client
     unzip
     tmux
     cargo
     gcc_multi
-    lua-language-server
-    nil
-    nodejs_20
-    lazygit
+    lua-language-server # required for nvim completion
+    nil # another nvim lsp
+    nodejs_20 # orignally for mason - probably not needed anymore
+    lazygit # has tmux bindings
     ripgrep
     fzf
     ranger
     keychain
-    qpwgraph
+    qpwgraph # pipewire gui
     teamspeak3
-    pavucontrol
+    pavucontrol # volume control - because nothing else was working
     cifs-utils
-    nixfmt-rfc-style
-    devenv
-    direnv
-    hypridle
-	starship
+    nixfmt-rfc-style # used for nvim nix formatting
+    devenv # fucking mess
+    direnv # Previously for devenv, may be good for venv still
+    hypridle # dpms control
+    starship # terminal prompt customization
+    bitwarden-desktop # password management
+    bitwarden-cli # see above, but cli
+    #rofi-rbw-wayland
+	simplescreenrecorder
   ];
 
   nixpkgs.overlays = [
@@ -207,7 +212,7 @@
   };
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
