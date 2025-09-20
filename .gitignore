@@ -12,9 +12,12 @@
 !/hypr/
 !/waybar/
 !/scripts/
+!/bin/
+!/direnv/
 
-# exclude configuration.nix
+# exclude specific files
 !/configuration.nix
 !/.bashrc
 !/.gitignore
 !/setup-dotfiles.sh
+!/starship.toml

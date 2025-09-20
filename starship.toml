@@ -1,0 +1,18 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+add_newline = false
+
+format = '''
+$status[\[$hostname$directory\] $git_branch$git_status$typst$python$direnv>](green) 
+'''
+
+[git_branch]
+#ignore_branches = ['master', 'main']
+
+[status]
+disabled = false
+format = '[$status]($style) '
+
+[directory]
+truncation_symbol = "../"
+truncation_length = 6
