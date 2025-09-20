@@ -16,7 +16,7 @@ vim.g.mapleader = ","
 -- load configurations/setups for plugins
 
 vim.keymap.set({ 'n', 'v' }, '<leader>v', ':e $MYVIMRC<CR>')
-vim.keymap.set({ 'n', 'v' }, '<leader>eb', ':e ~/.bashrc<CR>')
+vim.keymap.set({ 'n', 'v' }, '<leader>be', ':e ~/.bashrc<CR>')
 vim.keymap.set({ 'n', 'v' }, '<leader>nix', ':e /etc/nixos/configuration.nix<CR>')
 vim.keymap.set({ 'n', 'v' }, '<leader>o', ':update<CR>:source $MYVIMRC<CR>')
 vim.keymap.set({ 'n', 'v' }, '<leader>w', ':write<CR>')
