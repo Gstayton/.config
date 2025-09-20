@@ -11,5 +11,8 @@ alias cdc='cd ~/.config/'
 alias bload='source ~/.bashrc'
 alias pip-uninstall-all="pip list | awk '! /---*/ && $1 != \"Package\" && != \"pip\" {print $1}' | xargs pip uninstall -y"
 
+# kitty specific aliases
+alias icat="kitten icat"
+
 eval "$(starship init bash)"
 eval "$(direnv hook bash)"
