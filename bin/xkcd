@@ -5,13 +5,11 @@ url="https://xkcd.com/$1/"
 page="$(curl -L -s $url)"
 
 img="$(echo $page | rg -o --pcre2 'https:\/\/imgs\.xkcd\.com\/comics\/\w*(?<!_2x)\.png' | head -1)"
-alt="$(echo $page | rg -o '\{\{.*\}\}' | sed -E 's/(\{\{Title text: )|(\}\})//g' | sed -e 's/&amp;/&/g' -e 's/&lt;/</g' -e 's/&gt;/>/g' -e 's/&quot;/"/g' -e 's/&#39;/\x27/g')"
+alt="$(echo $page |rg -o --pcre2 'title=(?!"Default|"Atom|"RSS)"(.*?)"'| rg -o '"(.*?)"' | sed -E 's/(\{\{Title text: )|(\}\})//g' | sed -e 's/&amp;/&/g' -e 's/&lt;/</g' -e 's/&gt;/>/g' -e 's/&quot;/"/g' -e 's/&#39;/\x27/g')"
 
 echo $url
 
-if [ $TERM == "xterm-kitty" ] ; then
-	kitten icat $img
-	echo $url | wl-copy
-fi
+kitten icat $img
+echo $url | wl-copy
 
 echo $alt
