@@ -2,7 +2,7 @@
 
 url="https://xkcd.com/$1/"
 
-page="$(curl -s $url)"
+page="$(curl -L -s $url)"
 
 img="$(echo $page | rg -o --pcre2 'https:\/\/imgs\.xkcd\.com\/comics\/\w*(?<!_2x)\.png' | head -1)"
 alt="$(echo $page | rg -o '\{\{.*\}\}' | sed -E 's/(\{\{Title text: )|(\}\})//g' | sed -e 's/&amp;/&/g' -e 's/&lt;/</g' -e 's/&gt;/>/g' -e 's/&quot;/"/g' -e 's/&#39;/\x27/g')"
