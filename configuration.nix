@@ -83,7 +83,7 @@
   #Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kosan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "gamemode" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];
@@ -111,6 +111,8 @@
   programs.waybar.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   programs.steam.enable = true;
+
+  programs.gamemode.enable = true;
 
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
