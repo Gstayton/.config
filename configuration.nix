@@ -167,7 +167,9 @@
     bitwarden-desktop # password management
     bitwarden-cli # see above, but cli
     #rofi-rbw-wayland
-	simplescreenrecorder
+	mpv
+	obs-studio
+	obs-cli
   ];
 
   nixpkgs.overlays = [
