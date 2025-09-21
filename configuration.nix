@@ -37,7 +37,7 @@
 
   networking.hosts = {
     "192.168.0.235" = [ "tokyo" ];
-	"192.168.0.5" = [ "pihole" ];
+    "192.168.0.5" = [ "pihole" ];
   };
 
   # Set your time zone.
@@ -83,7 +83,10 @@
   #Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kosan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "gamemode" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "gamemode"
+    ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];
@@ -169,9 +172,39 @@
     bitwarden-desktop # password management
     bitwarden-cli # see above, but cli
     #rofi-rbw-wayland
-	mpv
-	obs-studio
-	obs-cli
+    mpv
+    obs-studio
+    obs-cli
+    r2modman
+    #(r2modman.overrideAttrs (
+    #  finalAttrs: previousAttrs: {
+    #    version = "3.2.6";
+    #    src = fetchFromGitHub {
+    #      owner = "ebkr";
+    #      repo = "r2modmanPlus";
+    #      rev = "v${finalAttrs.version}";
+    #      hash = "sha256-8FqUn8DDexm5MZwocu7MewTkSdIhSritwWjzqEpKGiM=";
+    #    };
+    #    offlineCache = fetchYarnDeps {
+    #      yarnLock = "${finalAttrs.src}/yarn.lock";
+    #      hash = "sha256-HLVHxjyymi0diurVamETrfwYM2mkUrIOHhbYCrqGkeg=";
+    #    };
+    #    configurePhase = ''
+    #      			runHook preConfigure
+
+    #      			# Workaround for webpack bug
+    #      			# https://github.com/webpack/webpack/issues/14532
+    #      			export NODE_OPTIONS="--openssl-legacy-provider"
+    #      			export HOME=$(mktemp -d)
+    #      			yarn config --offline set yarn-offline-mirror ${finalAttrs.offlineCache}
+    #      			fixup-yarn-lock yarn.lock
+    #      			yarn install --offline --frozen-lockfile --ignore-platform --ignore-scripts --no-progress --non-interactive --verbose
+    #      			patchShebangs node_modules/
+
+    #      			runHook postConfigure
+    #      		'';
+    #  }
+    #))
   ];
 
   nixpkgs.overlays = [
