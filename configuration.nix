@@ -15,8 +15,8 @@
     /etc/nixos/hardware-configuration.nix
     # nvidia specific settings
     /etc/nixos/nvidia.nix
-	#
-	/etc/nixos/network-storage.nix
+	# Breaks at boot due to not being able to mount remote storage
+	#/etc/nixos/network-storage.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
