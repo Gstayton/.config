@@ -37,7 +37,10 @@ vim.pack.add({
 	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/lambdalisue/vim-suda" },
+	{ src = "https://github.com/RedsXDD/neopywal.nvim" },
 })
+
+require "neopywal".setup()
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(ev)
@@ -72,4 +75,5 @@ vim.keymap.set('n', '<leader>lf', function()
 	require("conform").format({ async = true })
 end)
 
-vim.cmd("colorscheme vague")
+vim.opt.termguicolors = true
+vim.cmd.colorscheme("neopywal")
