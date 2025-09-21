@@ -33,4 +33,5 @@ if [ "$EUID" -ne 0 ]; then
 	echo "Re-run script with sudo -E"
 else
 	link_files configuration.nix /etc/nixos/configuration.nix
+	link_files network-storage.nix /etc/nixos/network-storage.nix
 fi

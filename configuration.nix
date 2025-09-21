@@ -13,10 +13,15 @@
   imports = [
     # Include the results of the hardware scan.
     /etc/nixos/hardware-configuration.nix
+    # nvidia specific settings
     /etc/nixos/nvidia.nix
+	#
+	/etc/nixos/network-storage.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
+
+  nix.settings.experimental-features = [ "nix-command" ];
 
   #fileSystems = {
   #  "/".options = [ "compress=zstd" ];
@@ -111,7 +116,7 @@
     enable = true;
     defaultEditor = true;
   };
-  programs.waybar.enable = true;
+  #programs.waybar.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   programs.steam.enable = true;
 
@@ -135,6 +140,8 @@
     kitty
     wofi
     x11_ssh_askpass
+	hyprpanel
+	hyprpaper
     git
     python3
     luajitPackages.luarocks-nix # maybe not needed anymore without mason?
@@ -163,6 +170,8 @@
     qpwgraph # pipewire gui
     teamspeak3
     pavucontrol # volume control - because nothing else was working
+    pywal16
+    qutebrowser
     cifs-utils
     nixfmt-rfc-style # used for nvim nix formatting
     devenv # fucking mess
@@ -256,7 +265,7 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
+  networking.firewall.checkReversePath = false;
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.

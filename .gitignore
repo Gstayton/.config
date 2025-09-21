@@ -17,6 +17,7 @@
 
 # exclude specific files
 !/configuration.nix
+!/network-storage.nix
 !/.bashrc
 !/.gitignore
 !/setup-dotfiles.sh
