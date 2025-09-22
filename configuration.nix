@@ -165,6 +165,7 @@
     lazygit # has tmux bindings
     ripgrep
 	skim
+	comma
     ranger
     keychain
     qpwgraph # pipewire gui
