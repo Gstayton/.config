@@ -1,3 +1,5 @@
+cat ~/.cache/wal/sequences
+
 PATH=$PATH:~/bin:~/.cargo/bin
 
 shopt -s autocd cdspell
