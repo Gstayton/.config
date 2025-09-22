@@ -15,8 +15,8 @@
     /etc/nixos/hardware-configuration.nix
     # nvidia specific settings
     /etc/nixos/nvidia.nix
-	# Breaks at boot due to not being able to mount remote storage
-	#/etc/nixos/network-storage.nix
+    # Breaks at boot due to not being able to mount remote storage
+    #/etc/nixos/network-storage.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -140,8 +140,8 @@
     kitty
     wofi
     x11_ssh_askpass
-	hyprpanel
-	hyprpaper
+    hyprpanel
+    hyprpaper
     git
     python3
     luajitPackages.luarocks-nix # maybe not needed anymore without mason?
@@ -164,8 +164,7 @@
     nodejs_20 # orignally for mason - probably not needed anymore
     lazygit # has tmux bindings
     ripgrep
-	skim
-	comma
+    skim
     ranger
     keychain
     qpwgraph # pipewire gui
