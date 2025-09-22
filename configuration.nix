@@ -164,7 +164,7 @@
     nodejs_20 # orignally for mason - probably not needed anymore
     lazygit # has tmux bindings
     ripgrep
-    fzf
+	skim
     ranger
     keychain
     qpwgraph # pipewire gui
