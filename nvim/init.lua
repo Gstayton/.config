@@ -9,7 +9,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.winborder = "rounded"
 vim.opt.undofile = true
 vim.opt.termguicolors = true
-vim.opt.autocomplete = true
+vim.opt.autocomplete = false
 
 vim.g.mapleader = ","
 vim.g.suda_smart_edit = true
