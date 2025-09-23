@@ -43,6 +43,7 @@ vim.pack.add({
 	{ src = "https://github.com/lambdalisue/vim-suda" },
 	{ src = "https://github.com/RedsXDD/neopywal.nvim" },
 	{ src = "https://github.com/folke/which-key.nvim" },
+	{ src = "https://github.com/mason-org/mason.nvim.git" },
 })
 
 require "neopywal".setup()

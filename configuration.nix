@@ -102,6 +102,8 @@
     "kosan"
   ];
 
+  programs.nix-ld.enable = true;
+
   programs.firefox.enable = true;
   programs.nh = {
     enable = true;
