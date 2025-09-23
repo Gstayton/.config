@@ -9,9 +9,10 @@ vim.opt.signcolumn = "yes"
 vim.opt.winborder = "rounded"
 vim.opt.undofile = true
 vim.opt.termguicolors = true
+vim.opt.autocomplete = true
 
 vim.g.mapleader = ","
-
+vim.g.suda_smart_edit = true
 
 -- load configurations/setups for plugins
 
@@ -25,6 +26,9 @@ vim.keymap.set({ 'n', 'v' }, '<leader>S', ':bot sf #<CR>')
 vim.keymap.set({ 'n', 'v' }, '<leader>d', '"+d')
 vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y')
 vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p')
+vim.keymap.set({ 'n', 'v' }, '<leader>?', function()
+	require "which-key".show({ global = false })
+end)
 
 vim.keymap.set({ 'n', 'v' }, '<a-/>', ':let @/ = "" <CR>')
 
@@ -38,6 +42,7 @@ vim.pack.add({
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/lambdalisue/vim-suda" },
 	{ src = "https://github.com/RedsXDD/neopywal.nvim" },
+	{ src = "https://github.com/folke/which-key.nvim" },
 })
 
 require "neopywal".setup()
@@ -62,12 +67,11 @@ require "conform".setup({
 -- plugins in plugins/
 require('plugins/oil')
 
+
 vim.keymap.set('n', '<leader>f', ':Pick files<CR>')
 vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 vim.keymap.set('n', '<leader>h', ':Pick help<CR>')
-vim.keymap.set('n', '<leader>g', function()
-	require('mini.pick').builtin.buffers()
-end, {desc = "Pick Buffer" })
+vim.keymap.set('n', '<leader>g', ':Pick buffers<CR>')
 
 vim.lsp.enable({ "lua_ls", "nil_ls", "autopep8" })
 
