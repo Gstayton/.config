@@ -11,6 +11,9 @@ export HISTIGNORE='exit:cd:ls:bg:fg:history:f:fd:vim:nvim'
 alias cdr='cd "$(git rev-parse --show-toplevel)"'
 alias cdc='cd ~/.config/'
 alias bload='source ~/.bashrc'
+,() {
+	nix-shell -p "$1" --run "$*"
+	}
 alias pip-uninstall-all="pip list | awk '! /---*/ && $1 != \"Package\" && != \"pip\" {print $1}' | xargs pip uninstall -y"
 
 # kitty specific aliases
