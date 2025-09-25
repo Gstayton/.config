@@ -14,6 +14,7 @@ vim.opt.autocomplete = false
 vim.opt.autocompletedelay = 15 -- prevent autocomplete from eating chars while typing
 vim.opt.completeopt = "noselect"
 vim.opt.autochdir = true
+vim.opt.colorcolumn = "80"
 
 vim.cmd('filetype plugin indent on')
 
