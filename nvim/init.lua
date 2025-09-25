@@ -16,6 +16,7 @@ vim.opt.completeopt = "noselect"
 vim.opt.autochdir = true
 vim.opt.colorcolumn = "80"
 
+vim.cmd('filetype off')
 vim.cmd('filetype plugin indent on')
 
 vim.g.suda_smart_edit = true
@@ -38,6 +39,7 @@ vim.pack.add({
 	{ src = "https://github.com/kaarmu/typst.vim" },
 	{ src = "https://github.com/SirVer/ultisnips" },
 	{ src = "https://github.com/zk-org/zk-nvim" },
+	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -55,6 +57,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- plugin setups
 require("mason").setup()
 require("mini.pick").setup()
+require("render-markdown").setup({
+	file_types = {"markdown"}
+})
 require("conform").setup({
 	formatters_by_ft = {
 		nix = { "nixfmt" },
