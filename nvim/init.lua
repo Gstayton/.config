@@ -1,6 +1,6 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.autoindent = true
@@ -14,6 +14,9 @@ vim.opt.autocomplete = false
 vim.opt.autocompletedelay = 15 -- prevent autocomplete from eating chars while typing
 vim.opt.completeopt = "noselect"
 vim.opt.autochdir = true
+
+vim.cmd('filetype plugin indent on')
+
 vim.g.suda_smart_edit = true
 
 vim.g.mapleader = ","
