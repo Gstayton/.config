@@ -26,3 +26,6 @@ if require('zk.util').notebook_root(vim.fn.expand('%:p')) ~= nil then
 	-- insert link at location
 	map('n', '<leader>zi', ':ZkInsertLink<CR>', opts)
 end
+
+vim.cmd('set conceallevel=2')
+vim.cmd('set concealcursor="nc"')
