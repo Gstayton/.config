@@ -1,0 +1,23 @@
+vim.keymap.set({ 'n', 'v' }, '<a-/>', ':let @/ = "" <CR>') -- clear search
+vim.keymap.set({ 'n', 'v' }, '<leader>v', ':lua ReloadConfig()<CR')
+vim.keymap.set({ 'n', 'v' }, '<leader>be', ':e ~/.bashrc<CR>')
+vim.keymap.set({ 'n', 'v' }, '<leader>nix', ':e /etc/nixos/configuration.nix<CR>')
+vim.keymap.set({ 'n', 'v' }, '<leader>o', ':update<CR>:luafile $MYVIMRC<CR>')
+vim.keymap.set({ 'n', 'v' }, '<leader>w', ':write<CR>')
+vim.keymap.set({ 'n', 'v' }, '<leader>q', ':quit<CR>')
+vim.keymap.set({ 'n', 'v' }, '<leader>S', ':bot sf #<CR>')
+vim.keymap.set({ 'n', 'v' }, '<leader>d', '"+d')
+vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y')
+vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p')
+vim.keymap.set({ 'n', 'v' }, '<leader>?', function()
+	require "which-key".show({ global = false })
+end)
+
+vim.keymap.set('n', '<leader>f', ':Pick files<CR>')
+vim.keymap.set('n', '<leader>e', ':Oil<CR>')
+vim.keymap.set('n', '<leader>h', ':Pick help<CR>')
+vim.keymap.set('n', '<leader>g', ':Pick buffers<CR>')
+
+vim.keymap.set('n', '<leader>lf', function()
+	require("conform").format({ async = true })
+end)

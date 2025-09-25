@@ -8,6 +8,8 @@ eval $(keychain --eval --quiet)
 
 export HISTIGNORE='exit:cd:ls:bg:fg:history:f:fd:vim:nvim'
 
+export ZK_NOTEBOOK_DIR=~/.notes
+
 alias cdr='cd "$(git rev-parse --show-toplevel)"'
 alias cdc='cd ~/.config/'
 alias bload='source ~/.bashrc'
