@@ -1,4 +1,4 @@
-# Edit this configuration file to define what should be installed on
+g Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
@@ -20,6 +20,7 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+  allowUnfree = true;
 
   nix.settings.experimental-features = [ "nix-command" ];
 
@@ -84,6 +85,8 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
+
+  services.gnome.gnome-keyring.enable = true;
 
   #Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kosan = {
@@ -152,6 +155,7 @@
     cliphist
     wl-clipboard
     discord
+	discordo
     (flameshot.override { enableWlrSupport = true; }) # screenshot utility
     neofetch
     mpc # cli music player
@@ -159,6 +163,7 @@
     rmpc # tui mpc client
     unzip
     tmux
+	zk
     cargo
     gcc_multi
     lua-language-server # required for nvim completion
@@ -167,11 +172,13 @@
     lazygit # has tmux bindings
     ripgrep
     skim
+	fzf # keeping for dependency purposes
     ranger
     keychain
     qpwgraph # pipewire gui
     teamspeak3
     pavucontrol # volume control - because nothing else was working
+	libsecret
     pywal16
     qutebrowser
     cifs-utils
