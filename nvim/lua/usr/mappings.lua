@@ -18,6 +18,8 @@ vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 vim.keymap.set('n', '<leader>h', ':Pick help<CR>')
 vim.keymap.set('n', '<leader>g', ':Pick buffers<CR>')
 
+vim.keymap.set('n', ';', ':')
+
 vim.keymap.set('n', '<leader>lf', function()
 	require("conform").format({ async = true })
 end)
@@ -34,3 +36,10 @@ vim.keymap.set('n', '<leader>zt', ':ZkTags<CR>', opts)
 vim.keymap.set('n', '<leader>zf', ":ZkNotes { sort = { 'modified' }, match = {vim.fn.input('Search: ') } }<CR>", opts)
 -- Search for notes matching selection
 vim.keymap.set('v', '<leader>zf', ":'<,'>ZkMatch<CR>", opts)
+
+vim.keymap.set('n', '<Tab>', ':bn<CR>');
+vim.keymap.set('n', '<S-Tab>', ':bp<CR>');
+
+vim.keymap.set("n", "<BS>", ":b#<CR>", { silent=true })
+
+
