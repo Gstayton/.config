@@ -2,7 +2,7 @@ vim.keymap.set({ 'n', 'v' }, '<a-/>', ':let @/ = "" <CR>') -- clear search
 vim.keymap.set({ 'n', 'v' }, '<leader>v', ':e $MYVIMRC<CR>')
 vim.keymap.set({ 'n', 'v' }, '<leader>be', ':e ~/.bashrc<CR>')
 vim.keymap.set({ 'n', 'v' }, '<leader>nix', ':e /etc/nixos/configuration.nix<CR>')
-vim.keymap.set({ 'n', 'v' }, '<leader>o', ':write<CR>:lua ReloadConfig()<CR>')
+vim.keymap.set({ 'n', 'v' }, '<leader>o', ':lua ReloadConfig()<CR>')
 vim.keymap.set({ 'n', 'v' }, '<leader>w', ':write<CR>')
 vim.keymap.set({ 'n', 'v' }, '<leader>q', ':quit<CR>')
 vim.keymap.set({ 'n', 'v' }, '<leader>S', ':bot sf #<CR>')
@@ -18,7 +18,7 @@ vim.keymap.set('n', '<leader>e', ':Oil<CR>')
 vim.keymap.set('n', '<leader>h', ':Pick help<CR>')
 vim.keymap.set('n', '<leader>g', ':Pick buffers<CR>')
 
-vim.keymap.set('n', ';', ':')
+-- vim.keymap.set('n', ';', ':')
 
 vim.keymap.set('n', '<leader>lf', function()
 	require("conform").format({ async = true })
