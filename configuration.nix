@@ -17,6 +17,7 @@
     /etc/nixos/nvidia.nix
     # Breaks at boot due to not being able to mount remote storage
     #/etc/nixos/network-storage.nix
+	/etc/nixos/custom-packages.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -98,6 +99,7 @@
     packages = with pkgs; [
       tree
     ];
+	initialPassword = "notsecure";
   };
 
   nix.settings.trusted-users = [
@@ -251,8 +253,22 @@
   };
 
   #services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  # services.displayManager.sddm.enable = true;
+  # services.displayManager.sddm.wayland.enable = true;
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-user-session --cmd 'dwl'";
+        user = "greeter";
+      };
+    };
+  };
+  environment.etc."greetd/environments".text = ''
+    sway
+    bash
+  '';
 
   services.mpd = {
     enable = true;
