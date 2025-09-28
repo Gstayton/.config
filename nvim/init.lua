@@ -74,9 +74,9 @@ require('usr/mappings')
 require('usr/lsp/lua_ls')
 
 
--- vim.lsp.config('*', {
--- 	root_markers= {'.git'},
--- })
+vim.lsp.config('*', {
+	root_markers= {'.git'},
+})
 vim.lsp.enable({ "lua_ls", "alejandra", "autopep8", "bashls", "ast-grep", "clang" })
 
 vim.opt.termguicolors = true

@@ -27,5 +27,6 @@ if require('zk.util').notebook_root(vim.fn.expand('%:p')) ~= nil then
 	map('n', '<leader>zi', ':ZkInsertLink<CR>', opts)
 end
 
+vim.treesitter.start()
 vim.cmd('set conceallevel=2')
 vim.cmd('set concealcursor="nc"')
